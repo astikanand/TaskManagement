@@ -1,22 +1,30 @@
 TaskManagement
 ------------------------------
-A task management system for user.
+A task management system for user. 
+
+Live
+------------------------------
+**TaskManagement** is live on [https://taskmanagement-astikanand.herokuapp.com](https://taskmanagement-astikanand.herokuapp.com)
 
 
 Features
 ------------------------------
+* User can create the task by clicking on `Create New Task`.
+* User can view all the tasks on the portal by clicking on `All Tasks`.
+* User can also see tasks created by them by clicking on `My Tasks`.
+* User can view the task detail by clicking on `View Detail` on task panel.
+* User can edit the tasks created by them by clicking on `Edit This Task` on task detail page.
+* User can delete the tasks created by them by clicking on `Delete This Task` on task detail page.
+* Proper errors like 400, 403, 404 and 500 error are shown if any violations.
+* User can create new account or login to existing account.
 
-* Live Preview
-* Integrated with `Ace Editor`_
-* Integrated with `Semantic-UI`_
-* Support Multiple Fields (`fixed this issue`_)
-* Upload Image to imgur.com `(via API)` and `custom uploader`_.
-* Direct Mention users ``@[username]`` - `(require user to logged in)`
-* Emoji ``:emoji_name:`` + Cheat sheets
-* Martor Commands Refference
-* Support Django Admin
-* Toolbar Buttons
-* Highlight ``pre``
+
+Validations
+------------------------------
+* User need to login to `Create New Task` and will be directed to login page on clicking `My tasks` if not logged in.
+* User need to login to  see `My tasks` and will be directed to login page on clicking `Create New Task` if not logged in.
+* User can `Edit` or `Delete` only the tasks that is created by them.
+
 
 
 Preview
@@ -31,200 +39,31 @@ Requirements
 ------------------------------
 
 * ``Django>=1.10.1``
-* ``Markdown>=2.6.7``
-* ``requests>=2.12.4``
+* ``django-widget-twaeaks>=1.4.0``
 
 
 Installation
 ------------------------------
 
-Martor is available directly from `PyPI`_:
-
 1. Download or clone the repository.
-
-::
 
     $ git clone https://github.com/astikanand/TaskManagement.git
 
 2. Install dependencies by going into the project directory
 
-::
-
     $ pip install -r requirements.txt
+    
+3. Change `Debug` mode on localhost
 
-3. Migrate the changes to database and run the server
+    Debug = True
 
-::
+4. Migrate the changes to database and run the server
 
     $ python manage.py makemigrations
     $ python manage.py migrate
+    $ python manage.py collectstatic
     $ python manage.py runserver
 
+5. Open your browser and hit [localhost:8000](http://localhost:8000/) 
+    
 
-4. Collect included some martor static files to your ``STATIC_ROOT`` folder.
-
-::
-
-    ./manage.py collectstatic
-
-
-Setting Configurations ``settings.py``
----------------------------------------
-
-Please register application in https://api.imgur.com/oauth2/addclient
-to get ``IMGUR_CLIENT_ID`` and ``IMGUR_API_KEY``.
-
-::
-
-    # Global martor settings
-    # Input: string boolean, `true/false`
-    MARTOR_ENABLE_CONFIGS' = {
-        'imgur': 'true',     # to enable/disable imgur/custom uploader.
-        'mention': 'false',  # to enable/disable mention
-        'jquery': 'true',    # to include/revoke jquery (require for admin default django)
-    }
-
-    # Imgur API Keys
-    MARTOR_IMGUR_CLIENT_ID = 'your-client-id'
-    MARTOR_IMGUR_API_KEY   = 'your-api-key'
-
-    # Safe Mode
-    MARTOR_MARKDOWN_SAFE_MODE = True # default
-
-    # Markdownify
-    MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify' # default
-    MARTOR_MARKDOWNIFY_URL = '/martor/markdownify/' # default
-
-    # Markdown extensions (default)
-    MARTOR_MARKDOWN_EXTENSIONS = [
-        'markdown.extensions.extra',
-        'markdown.extensions.nl2br',
-        'markdown.extensions.smarty',
-        'markdown.extensions.fenced_code',
-
-        # Custom markdown extensions.
-        'martor.extensions.urlize',
-        'martor.extensions.del_ins', # ~~strikethrough~~ and ++underscores++
-        'martor.extensions.mention', # require for mention
-        'martor.extensions.emoji',   # require for emoji
-    ]
-
-    # Markdown Extensions Configs
-    MARTOR_MARKDOWN_EXTENSION_CONFIGS = {}
-
-    # Markdown urls
-    MARTOR_UPLOAD_URL = '/martor/uploader/' # default
-    MARTOR_SEARCH_USERS_URL = '/martor/search-user/' # default
-
-    # Markdown Extensions
-    MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://assets-cdn.github.com/images/icons/emoji/' # default
-    MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/' # default (change this)
-
-Check this setting is not set else csrf will not be sent over ajax calls:
-
-::
-
-    CSRF_COOKIE_HTTPONLY = False
-
-
-Usage
-------------------------------
-
-**Model**
-
-::
-
-    from django.db import models
-    from martor.models import MartorField
-
-    class Post(models.Model):
-        description = MartorField()
-
-
-**Form**
-
-::
-
-    from django import forms
-    from martor.fields import MartorFormField
-
-    class PostForm(forms.Form):
-        description = MartorFormField()
-
-
-**Admin**
-
-::
-
-    from django.db import models
-    from django.contrib import admin
-
-    from martor.widgets import AdminMartorWidget
-
-    from yourapp.models import YourModel
-
-    class YourModelAdmin(admin.ModelAdmin):
-        formfield_overrides = {
-            models.TextField: {'widget': AdminMartorWidget},
-        }
-
-    admin.site.register(YourModel, YourModelAdmin)
-
-
-**Template**
-
-Simply safe the markdown content as html ouput with loading the templatetags from ``martor/templatetags/martortags.py``.
-
-::
-
-    {% load martortags %}
-    {{ field_name|safe_markdown }}
-
-    # example
-    {{ post.description|safe_markdown }}
-
-
-Custom Uploader
------------------
-
-If you want to save the images uploaded to your storage,
-**Martor** also provide to handle it. Please checkout this `WIKI`_.
-
-Test the Martor from this Repository
--------------------------------------
-
-I assume you already setup with virtual enviroment (virtualenv).
-
-::
-
-    $ git clone https://github.com/agusmakmun/django-markdown-editor.git
-    $ cd django-markdown-editor/ && python setup.py install
-    $ cd martor_demo/
-    $ python manage.py makemigrations && python manage.py migrate
-    $ python manage.py runserver
-
-
-And let checkout at http://127.0.0.1:8000/simple-form/ to your browser.
-
-
-Martor Commands Refference
---------------------------------
-
-.. image:: https://raw.githubusercontent.com/agusmakmun/django-markdown-editor/master/__screenshot/martor-guide.png
-
-
-Notes
---------------------------------
-
-**Martor** was inspired by great `django-markdownx`_, `Python Markdown`_ and `Online reStructuredText editor`_.
-
-
-.. _Ace Editor: https://ace.c9.io
-.. _Semantic-UI: http://semantic-ui.com
-.. _PyPI: https://pypi.python.org/pypi/martor
-.. _django-markdownx: https://github.com/adi-/django-markdownx
-.. _Python Markdown: https://github.com/waylan/Python-Markdown
-.. _Online reStructuredText editor: http://rst.ninjs.org
-.. _WIKI: https://github.com/agusmakmun/django-markdown-editor/wiki
-.. _fixed this issue: https://github.com/agusmakmun/django-markdown-editor/issues/3
-.. _custom uploader: https://github.com/agusmakmun/django-markdown-editor/wiki
