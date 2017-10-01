@@ -17,6 +17,7 @@ Features
 * User can delete the tasks created by them by clicking on `Delete This Task` on task detail page.
 * Proper errors like 400, 403, 404 and 500 error are shown if any violations.
 * User can create new account or login to existing account.
+* Pagination to navigate between the pages 
 
 
 Validations
@@ -24,12 +25,6 @@ Validations
 * User need to login to `Create New Task` and will be directed to login page on clicking `My tasks` if not logged in.
 * User need to login to  see `My tasks` and will be directed to login page on clicking `Create New Task` if not logged in.
 * User can `Edit` or `Delete` only the tasks that is created by them.
-
-
-
-Preview
-------------------------------
-
 
 
 Requirements
@@ -63,4 +58,46 @@ Installation
 
 5. Open your browser and hit [localhost:8000](http://localhost:8000/) 
     
+
+Preview
+------------------------------
+
+**Home**
+
+![TaskManagement Home Page](https://i.imgur.com/p0W0MUV.png)
+
+**All Tasks**
+
+![All Tasks](https://i.imgur.com/LKDCkgd.png)
+
+**My Tasks**
+
+![My Tasks](https://i.imgur.com/TNgMEix.png)
+
+**Task detail**
+
+![Task detail](https://i.imgur.com/vDTgUlZ.png)
+
+**Create Task**
+
+![Create Task](https://i.imgur.com/tmmRxq9.png)
+
+**Edit Task**
+
+![Edit Task](https://i.imgur.com/tsn793n.png)
+
+**Delete Task**
+
+![Delete](https://i.imgur.com/zE3ZYeG.png)
+
+**Error Page**
+
+![Error Page](https://i.imgur.com/Wou01d6.png)
+
+**Admin Panel**
+
+![Admin Panel](https://i.imgur.com/BNWeMCu.png)
+
+
+
 
