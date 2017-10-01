@@ -15,6 +15,7 @@ class TaskIndexView(ListView):
     model = Task
     context_object_name = 'questions'
     template_name = 'task/tasks.html'
+    order_by = '-dateUpdated'
 
     def get_context_data(self, *args, **kwargs):
         context = super(TaskIndexView, self).get_context_data(*args, **kwargs)
