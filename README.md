@@ -38,8 +38,10 @@ Installation
 ------------------------------
 
 1. Download or clone the repository.
-
+    
+    """
     $ git clone https://github.com/astikanand/TaskManagement.git
+    """
 
 2. Install dependencies by going into the project directory
 
