@@ -38,10 +38,8 @@
                     {% if user.is_authenticated %}
                         {% if user.is_superuser or user.is_staff %}
                         <li><a href="/admin">Visit Admin Panel</a></li>
-                        <li><a>|</a></li>
                         {% endif %}
                         <li><a href="#">{{user.username|capfirst}}</a></li>
-                        <li><a>|</a></li>
                         <li><a href="{% url 'logout' %}?next=/">Logout</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
