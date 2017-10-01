@@ -32,7 +32,7 @@
                     <li class="{% if homeTabActive %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
                     <li class="{% if allTaskTabActive %}active{% endif %}"><a href="{% url 'allTasks' %}">All Tasks</a></li>
                     <li class="{% if myTaskTabActive %}active{% endif %}"><a href="{% url 'myTasks' %}">My Tasks</a></li>
-                    <li><a href="{% url 'newTask' %}" class="btn btn-xs btn-default create-btn">Create New Task</a></li>
+                    <li><a href="{% url 'newTask' %}" class="btn btn-xs btn-default create-btn" style="padding:5px 10px;">Create New Task</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
