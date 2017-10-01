@@ -13,12 +13,14 @@
                         <small><b>Created by: </b>{{task.user.username | capfirst}} {{task.dateCreated | naturaltime}}</small><br>
                         <small><b>Last Updated: </b> {{task.dateUpdated|naturaltime}}</h4>
                     </div>
+                    {% if task.user == request.user %}
                     <div class="col-md-3">
                         <a href="{% url 'editTask' task.id %}" class="btn btn-primary pull-right">Edit This Task</a>
                     </div>
                     <div class="col-md-3">
                         <a href="{% url 'deleteTask' task.id %}" class="btn btn-danger pull-right">Delete This Task</a>
                     </div>
+                    {% endif %}
                 </div>
 
                 <h3><b>Description:</b></h3>
