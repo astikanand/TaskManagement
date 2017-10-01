@@ -39,24 +39,30 @@ Installation
 
 1. Download or clone the repository.
     
-    """
+    ```
     $ git clone https://github.com/astikanand/TaskManagement.git
-    """
+    ```
 
 2. Install dependencies by going into the project directory
 
+    ```
     $ pip install -r requirements.txt
+    ```
     
 3. Change `Debug` mode on localhost
 
+    ```
     Debug = True
+    ```
 
 4. Migrate the changes to database and run the server
 
+    ```
     $ python manage.py makemigrations
     $ python manage.py migrate
     $ python manage.py collectstatic
     $ python manage.py runserver
+    ```
 
 5. Open your browser and hit [localhost:8000](http://localhost:8000/) 
     
