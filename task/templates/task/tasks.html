@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% load humanize %}
+
+{% block title %}{% if myTaskTabActive %} My {% else %} All {% endif %} Tasks | TaskManagement{% endblock %}
+
+{% block content %}
+<h1 style="margin-bottom:30px;">{% if myTaskTabActive %} My {% else %} All {% endif %} Tasks: {{total}}</h1><hr>
+<!-- Shows List of Tasks paginated by 6 items -->
+<div class="row">
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="col-md-4" style="height:280px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{task.name}}</h3>
+                    </div>
+                    <div class="panel-body" style="height:160px">
+                        {{task.description | slice:":300" }} . . . .
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <b>Created By: </b>{{task.user.username | capfirst}}
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{% url 'taskDetail' task.id %}" class="btn btn-xs btn-info pull-right">View Detail</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3 style="margin-left:15px">No tasks available for now.</h3>
+    {% endif %}
+</div>
+
+<!-- Pagination for Tasks -->
+<div class="row">
+    <div class="col-md-9">
+        {% if tasks.has_other_pages %}
+            <ul class="pagination">
+                {% if tasks.has_previous %}
+                    <li><a href="?page={{ tasks.previous_page_number }}"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                {% else %}
+                    <li class="disabled"><span><i class="fa fa-chevron-left"></i> Previous</span></li>
+                {% endif %}
+
+                {% for i in tasks.paginator.page_range %}
+                    {% if tasks.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if tasks.has_next %}
+                    <li><a href="?page={{ tasks.next_page_number }}">Next <i class="fa fa-chevron-right"></i></a></li>
+                {% else %}
+                    <li class="disabled"><span>Next <i class="fa fa-chevron-right"></i></span></li>
+            {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

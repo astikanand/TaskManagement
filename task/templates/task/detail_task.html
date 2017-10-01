@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% load humanize %}
+
+{% block title %}{{task.name}} detail | TaskManagement{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            {% if task %}
+                <h3><b>Task Name: </b>{{task.name}}</h3><hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <small><b>Created by: </b>{{task.user.username | capfirst}} {{task.dateCreated | naturaltime}}</small><br>
+                        <small><b>Last Updated: </b> {{task.dateUpdated|naturaltime}}</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="{% url 'editTask' task.id %}" class="btn btn-primary pull-right">Edit This Task</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="{% url 'deleteTask' task.id %}" class="btn btn-danger pull-right">Delete This Task</a>
+                    </div>
+                </div>
+
+                <h3><b>Description:</b></h3>
+                <p>{{task.description | safe}}</p>
+
+            {% else %}
+                <h3>Not available</h3>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

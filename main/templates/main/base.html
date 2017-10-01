@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="A Task Management System through which a user can create, edit, list and delete tasks.">
+    <meta name="author" content="Astik Anand">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{% static 'main/css/custom.css' %}"/>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home' %}" style="color:#13a5a6;font:bold">TaskManagement</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav select-active">
+                    <li class="{% if homeTabActive %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="{% if allTaskTabActive %}active{% endif %}"><a href="{% url 'allTasks' %}">All Tasks</a></li>
+                    <li class="{% if myTaskTabActive %}active{% endif %}"><a href="{% url 'myTasks' %}">My Tasks</a></li>
+                    <li><a href="{% url 'newTask' %}" class="btn btn-xs btn-default" style="padding:5px 10px;margin-left:30px;margin-top:10px;">Create New Task</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser or user.is_staff %}
+                        <li><a href="/admin">Visit Admin Panel</a></li>
+                        <li><a>|</a></li>
+                        {% endif %}
+                        <li><a href="#">{{user.username|capfirst}}</a></li>
+                        <li><a>|</a></li>
+                        <li><a href="{% url 'logout' %}?next=/">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+                        <li><a href="{% url 'signup' %}?next={{request.path}}">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container page-wrapper">
+        {% block content %} {% endblock %}
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            https://taskmanagement-astikanand.herokuapp.com &copy; Copyright 2017.  All Rights Reserved. [Developed By: Astik Anand]
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

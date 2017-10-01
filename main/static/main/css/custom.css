@@ -1,0 +1,36 @@
+body {
+    padding-top: 70px;
+    background: #f3f3f3;
+}
+
+
+.page-wrapper {
+    min-height: 680px;
+    background: #fff;
+    margin-top: -18px;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: seagreen;
+}
+.navbar-fixed-top {
+    border-width: 0;
+}
+
+p{
+    font-size: 16px;
+    color: gray;
+}
+.footer {
+    padding: 30px;
+    bottom: 0;
+    height: 20px;
+    background: grey;
+    width: 100%;
+    text-align: center;
+}
+
+.martor-field {
+    margin: -14px !important;
+}

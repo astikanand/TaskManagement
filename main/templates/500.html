@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Server error | TaskManagement{% endblock %}
+
+{% block content %}
+<div class="col-md-offset-1 col-md-10">
+    <h1>Error:500 - Server error </h1>
+
+    <p>There's been an error. It's been reported to the site administrators via e-mail and should be fixed shortly. Thanks for your patience.</p>
+
+    <h2><a href="" onClick="javascript:history.go(-1);">Click Here</a> to return to previous page.</h2>
+</div>
+{% endblock %}
