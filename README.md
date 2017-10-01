@@ -66,33 +66,56 @@ Preview
 
 ![TaskManagement Home Page](https://i.imgur.com/p0W0MUV.png)
 
+
+
+
 **All Tasks**
 
 ![All Tasks](https://i.imgur.com/LKDCkgd.png)
+
+
+
 
 **My Tasks**
 
 ![My Tasks](https://i.imgur.com/TNgMEix.png)
 
+
+
+
+
 **Task detail**
 
 ![Task detail](https://i.imgur.com/vDTgUlZ.png)
+
+
+
 
 **Create Task**
 
 ![Create Task](https://i.imgur.com/tmmRxq9.png)
 
+
+
 **Edit Task**
 
 ![Edit Task](https://i.imgur.com/tsn793n.png)
+
+
 
 **Delete Task**
 
 ![Delete](https://i.imgur.com/zE3ZYeG.png)
 
+
+
+
 **Error Page**
 
 ![Error Page](https://i.imgur.com/Wou01d6.png)
+
+
+
 
 **Admin Panel**
 
