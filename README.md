@@ -30,7 +30,7 @@ Validations
 Preview
 ------------------------------
 
-.. image:: https://raw.githubusercontent.com/agusmakmun/django-markdown-editor/master/__screenshot/martor-preview-editor.png
+![TaskManagement Home page](https://imgur.com/a/MxdEJ)
 
 .. image:: https://raw.githubusercontent.com/agusmakmun/django-markdown-editor/master/__screenshot/martor-preview-result.png
 
