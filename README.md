@@ -31,7 +31,7 @@ Requirements
 ------------------------------
 
 * ``Django>=1.10.1``
-* ``django-widget-twaeaks>=1.4.0``
+* ``django-widget-tweaks>=1.4.0``
 
 
 Installation
