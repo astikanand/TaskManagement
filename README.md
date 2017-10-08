@@ -1,6 +1,6 @@
 TaskManagement
 ------------------------------
-A task management system for user. 
+A Task Management System developed using **Python and Django** which gives user an option to view all tasks on portal, view tasks created by them. It also give user option to create, edit and delete tasks on basis of ownership.
 
 Live
 ------------------------------
